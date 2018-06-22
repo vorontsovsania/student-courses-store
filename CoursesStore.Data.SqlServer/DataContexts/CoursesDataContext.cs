@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CoursesStore.Data.Entities;
+﻿using CoursesStore.Data.Entities;
 using CoursesStore.Data.SqlServer.Configurations;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +6,7 @@ namespace CoursesStore.Data.SqlServer.DataContexts
 {
 	public class CoursesDataContext : DbContext
 	{
-		public CoursesDataContext(DbContextOptions options)
+		public CoursesDataContext(DbContextOptions<CoursesDataContext> options)
 			: base(options)
 		{
 		}
