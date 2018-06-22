@@ -12,6 +12,11 @@ namespace CoursesStore.Data.SqlServer.Configurations
 			builder.Property(t => t.FirstName)
 				.IsRequired()
 				.HasMaxLength(50);
+			builder.Property(t => t.LastName)
+				.IsRequired()
+				.HasMaxLength(50);
+			builder.Property(t => t.BirthDate)
+				.IsRequired();
 			builder.ToTable("Students");
 		}
 	}
