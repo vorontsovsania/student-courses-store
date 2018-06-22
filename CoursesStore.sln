@@ -5,9 +5,15 @@ VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CoursesStore.Database", "CoursesStore.Database\CoursesStore.Database.sqlproj", "{042EDABD-E4C4-419D-B453-F8A57B918D17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursesStore.Data", "CoursesStore.Data\CoursesStore.Data.csproj", "{2CA107F8-84BD-4AC4-A8D7-6EFC4475EBB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursesStore.Data", "CoursesStore.Data\CoursesStore.Data.csproj", "{2CA107F8-84BD-4AC4-A8D7-6EFC4475EBB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursesStore.Data.SqlServer", "CoursesStore.Data.SqlServer\CoursesStore.Data.SqlServer.csproj", "{9D20435E-B0B6-43F2-A38A-EE6A9853ED1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursesStore.Data.SqlServer", "CoursesStore.Data.SqlServer\CoursesStore.Data.SqlServer.csproj", "{9D20435E-B0B6-43F2-A38A-EE6A9853ED1F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3DD415D0-E928-46AE-AE9C-F80C2540FF12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseStore.Data.SqlServer.IntegrationTests", "CourseStore.Data.SqlServer.IntegrationTests\CourseStore.Data.SqlServer.IntegrationTests.csproj", "{BDA47FDC-F706-4AB6-AC30-C00B6BC0779E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Common", "Tests.Common\Tests.Common.csproj", "{E8C00ADB-74D3-4C19-80E7-3A7A75D63782}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,9 +35,21 @@ Global
 		{9D20435E-B0B6-43F2-A38A-EE6A9853ED1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D20435E-B0B6-43F2-A38A-EE6A9853ED1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D20435E-B0B6-43F2-A38A-EE6A9853ED1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDA47FDC-F706-4AB6-AC30-C00B6BC0779E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDA47FDC-F706-4AB6-AC30-C00B6BC0779E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDA47FDC-F706-4AB6-AC30-C00B6BC0779E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDA47FDC-F706-4AB6-AC30-C00B6BC0779E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8C00ADB-74D3-4C19-80E7-3A7A75D63782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8C00ADB-74D3-4C19-80E7-3A7A75D63782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8C00ADB-74D3-4C19-80E7-3A7A75D63782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8C00ADB-74D3-4C19-80E7-3A7A75D63782}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BDA47FDC-F706-4AB6-AC30-C00B6BC0779E} = {3DD415D0-E928-46AE-AE9C-F80C2540FF12}
+		{E8C00ADB-74D3-4C19-80E7-3A7A75D63782} = {3DD415D0-E928-46AE-AE9C-F80C2540FF12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1AE2D351-3241-4BDC-B36F-4FB5B0703EDA}
