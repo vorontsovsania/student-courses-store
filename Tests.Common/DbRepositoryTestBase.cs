@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 
 namespace Tests.Common
@@ -27,6 +28,23 @@ namespace Tests.Common
 			}
 			_repository = (TRepository)Activator.CreateInstance(typeof(TRepository), _dbContext);
 			return _repository;
+		}
+
+		protected virtual IDbContextTransaction CreateTransaction()
+		{
+			if (_dbContext == null)
+			{
+				_dbContext = CreateDbContext();
+			}
+			return _dbContext.Database.BeginTransaction();
+		}
+
+		protected void UseNonCommittedTransaction(Action action)
+		{
+			using (var transaction = CreateTransaction())
+			{
+				action();
+			}
 		}
 
 		protected virtual void DisposeDbContext()

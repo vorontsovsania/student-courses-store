@@ -19,5 +19,18 @@ namespace CoursesStore.Data.SqlServer.Repositories
 		{
 			return _dbContext.Students.AsEnumerable();
 		}
+
+		public Student GetStudent(int studentId)
+		{
+			return _dbContext.Students
+				.FirstOrDefault(x => x.StudentId == studentId);
+		}
+
+		public int AddStudent(Student student)
+		{
+			_dbContext.Students.Add(student);
+			_dbContext.SaveChanges();
+			return student.StudentId;
+		}
 	}
 }
