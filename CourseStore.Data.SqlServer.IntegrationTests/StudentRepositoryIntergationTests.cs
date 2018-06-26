@@ -5,6 +5,8 @@ using CoursesStore.Data.SqlServer.DataContexts;
 using CoursesStore.Data.SqlServer.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Tests.Common;
+using FluentAssertions;
+using Tests.Common.FakeData.Database;
 
 namespace CourseStore.Data.SqlServer.IntegrationTests
 {
@@ -37,18 +39,15 @@ namespace CourseStore.Data.SqlServer.IntegrationTests
 		{
 			UseNonCommittedTransaction(() =>
 			{
-				Student student = new Student
-				{
-					FirstName = "First Name",
-					LastName = "Last Name",
-					BirthDate = DateTime.Now.AddYears(-23)
-				};
+				Student student = new StudentFakeBuilder(); //.Build();
 
 				int studentId = _repository.AddStudent(student);
 				Student dbStudent = _repository.GetStudent(studentId);
 
 				Assert.AreNotEqual(studentId, 0);
+				studentId.Should().NotBe(0);
 				Assert.AreEqual(student.FirstName, dbStudent.FirstName);
+				student.FirstName.Should().Be(dbStudent.FirstName);
 				Assert.AreEqual(student.LastName, dbStudent.LastName);
 			});
 		}
