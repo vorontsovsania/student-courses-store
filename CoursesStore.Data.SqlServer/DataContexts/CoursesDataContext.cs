@@ -12,10 +12,14 @@ namespace CoursesStore.Data.SqlServer.DataContexts
 		}
 
 		public DbSet<Student> Students { get; set; }
+		public DbSet<CourseDirection> CourseDirections { get; set; }
+		public DbSet<Course> Courses { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.ApplyConfiguration(new StudentConfiguration());
+			modelBuilder.ApplyConfiguration(new CourseDirectionConfiguration());
+			modelBuilder.ApplyConfiguration(new CourseConfiguration());
 		}
 	}
 }
