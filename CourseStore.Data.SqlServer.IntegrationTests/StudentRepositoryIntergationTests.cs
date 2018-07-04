@@ -1,6 +1,7 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+using CoursesStore.Common.Paging;
 using CoursesStore.Data.Entities;
+using CoursesStore.Data.Filters;
 using CoursesStore.Data.SqlServer.DataContexts;
 using CoursesStore.Data.SqlServer.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -32,6 +33,25 @@ namespace CourseStore.Data.SqlServer.IntegrationTests
 		{
 			var students = _repository.GetStudents().ToList();
 			Assert.AreNotEqual(students.Count, 0);
+		}
+
+		[TestMethod]
+		public void PagedStudentsShouldBeReturnedFromDbTest()
+		{
+			PageFilter<StudentsListFilter> filter = new PageFilter<StudentsListFilter>
+			{
+				Filter = new StudentsListFilter
+				{
+					FirstName = "a"
+				},
+				Pager = new Pager
+				{
+					PageNumber = 2,
+					PageSize = 7
+				}
+			};
+			var students = _repository.GetPagedStudents(filter).ToList();
+			Assert.AreEqual(students.Count, filter.Pager.PageSize);
 		}
 
 		[TestMethod]

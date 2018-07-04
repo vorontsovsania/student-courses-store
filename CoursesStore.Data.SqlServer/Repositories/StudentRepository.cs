@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CoursesStore.Data.Entities;
+using CoursesStore.Data.Filters;
 using CoursesStore.Data.Interfaces;
 using CoursesStore.Data.SqlServer.DataContexts;
 
@@ -18,6 +19,19 @@ namespace CoursesStore.Data.SqlServer.Repositories
 		public IEnumerable<Student> GetStudents()
 		{
 			return _dbContext.Students.AsEnumerable();
+		}
+
+		public IEnumerable<Student> GetPagedStudents(PageFilter<StudentsListFilter> pagerFilter)
+		{
+			var filtered = _dbContext.Students
+				.Where(x => (string.IsNullOrEmpty(pagerFilter.Filter.FirstName) || x.FirstName.Contains(pagerFilter.Filter.FirstName))
+					&& (string.IsNullOrEmpty(pagerFilter.Filter.LastName) || x.LastName.Contains(pagerFilter.Filter.LastName))
+					&& (!pagerFilter.Filter.BirthDate.HasValue || x.BirthDate == pagerFilter.Filter.BirthDate)
+				);
+
+			return filtered
+				.Skip((pagerFilter.Pager.PageNumber - 1) * pagerFilter.Pager.PageSize)
+				.Take(pagerFilter.Pager.PageSize);
 		}
 
 		public Student GetStudent(int studentId)
