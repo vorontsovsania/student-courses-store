@@ -50,8 +50,11 @@ namespace CourseStore.Data.SqlServer.IntegrationTests
 					PageSize = 7
 				}
 			};
-			var students = _repository.GetPagedStudents(filter).ToList();
+			int total;
+			int dbTotalCount = 26;
+			var students = _repository.GetPagedStudents(filter, out total).ToList();
 			Assert.AreEqual(students.Count, filter.Pager.PageSize);
+			total.Should().Be(dbTotalCount);
 		}
 
 		[TestMethod]

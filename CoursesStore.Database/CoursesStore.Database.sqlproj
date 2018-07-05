@@ -60,6 +60,7 @@
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
     <Folder Include="Scripts" />
+    <Folder Include="Generators" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Students.sql" />
@@ -69,5 +70,8 @@
   <ItemGroup>
     <PostDeploy Include="Scripts\PostDeployment.sql" />
     <None Include="Scripts\TestData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Generators\CourseStore.xlsx" />
   </ItemGroup>
 </Project>
