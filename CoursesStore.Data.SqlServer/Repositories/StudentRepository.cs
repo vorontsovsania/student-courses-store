@@ -21,7 +21,7 @@ namespace CoursesStore.Data.SqlServer.Repositories
 			return _dbContext.Students.AsEnumerable();
 		}
 
-		public IEnumerable<Student> GetPagedStudents(PageFilter<StudentsListFilter> pagerFilter)
+		public IEnumerable<Student> GetPagedStudents(PageFilter<StudentsListFilter> pagerFilter, out int totalSize)
 		{
 			var filtered = _dbContext.Students
 				.Where(x => (string.IsNullOrEmpty(pagerFilter.Filter.FirstName) || x.FirstName.Contains(pagerFilter.Filter.FirstName))
@@ -29,9 +29,12 @@ namespace CoursesStore.Data.SqlServer.Repositories
 					&& (!pagerFilter.Filter.BirthDate.HasValue || x.BirthDate == pagerFilter.Filter.BirthDate)
 				);
 
-			return filtered
-				.Skip((pagerFilter.Pager.PageNumber - 1) * pagerFilter.Pager.PageSize)
-				.Take(pagerFilter.Pager.PageSize);
+			totalSize = filtered.Count();
+
+			return pagerFilter.Pager.SkipAndTake(filtered);
+			//return filtered
+			//	.Skip((pagerFilter.Pager.PageNumber - 1) * pagerFilter.Pager.PageSize)
+			//	.Take(pagerFilter.Pager.PageSize);
 		}
 
 		public Student GetStudent(int studentId)

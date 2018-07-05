@@ -8,7 +8,7 @@ namespace CoursesStore.Data.Interfaces
 	{
 		IEnumerable<Student> GetStudents();
 
-		IEnumerable<Student> GetPagedStudents(PageFilter<StudentsListFilter> pagerFilter);
+		IEnumerable<Student> GetPagedStudents(PageFilter<StudentsListFilter> pagerFilter, out int totalSize);
 
 		Student GetStudent(int studentId);
 
