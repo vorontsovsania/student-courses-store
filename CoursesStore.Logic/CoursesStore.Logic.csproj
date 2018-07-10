@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoursesStore.Common\CoursesStore.Common.csproj" />
+    <ProjectReference Include="..\CoursesStore.Data.SqlServer\CoursesStore.Data.SqlServer.csproj" />
+    <ProjectReference Include="..\CoursesStore.Data\CoursesStore.Data.csproj" />
+    <ProjectReference Include="..\CoursesStore.Service.Contract\CoursesStore.Service.Contract.csproj" />
+  </ItemGroup>
+
+</Project>
