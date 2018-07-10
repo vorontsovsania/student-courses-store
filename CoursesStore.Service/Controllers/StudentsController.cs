@@ -17,7 +17,7 @@ namespace CoursesStore.Service.Controllers
 
 		[HttpPut]
 		[Route("")]
-		public ActionResult<StudentList> GetStudents([FromBody] StudentListRequest reguest)
+		public IActionResult GetStudents([FromBody] StudentListRequest reguest)
 		{
 			//todo add model validation, exception handling, logging
 			var students = _studentManager.GetPagedStudents(reguest);
