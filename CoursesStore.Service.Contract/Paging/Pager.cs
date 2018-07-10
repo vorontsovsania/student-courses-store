@@ -2,12 +2,13 @@
 
 namespace CoursesStore.Service.Contract.Paging
 {
-	public class Pager
-	{
-		[Required]
-		public int PageNumber { get; set; }
+    public class Pager
+    {
+        //todo add custom validation: Min(1)
+        [Required]
+        public int PageNumber { get; set; }
 
-		[Required]
-		public int PageSize { get; set; }
-	}
+        [Required]
+        public int PageSize { get; set; }
+    }
 }
