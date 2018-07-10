@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoursesStore.Data.SqlServer\CoursesStore.Data.SqlServer.csproj" />
+    <ProjectReference Include="..\CoursesStore.Data\CoursesStore.Data.csproj" />
+    <ProjectReference Include="..\CoursesStore.Logic\CoursesStore.Logic.csproj" />
+    <ProjectReference Include="..\CoursesStore.Service.Contract\CoursesStore.Service.Contract.csproj" />
+  </ItemGroup>
+
+</Project>
